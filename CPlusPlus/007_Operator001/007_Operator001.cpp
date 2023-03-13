@@ -79,5 +79,9 @@ int main()
 	bResult = true || true; // 둘중 하나라도 참이라면 모두 참
 	bResult = true || false; 
 	bResult = false || false;
+
+
+	Left = Left + 3;
+
 }
 
