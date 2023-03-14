@@ -40,6 +40,10 @@ int Plus(int _Left, int _Right)
 	return _Left + _Right;
 }
 
+
+// 이름이 같은 변수는 선언할 수 없다.
+// 함수를 실행하는데 필요한 메모리 비용은 언제나
+// 인자 전체 크기 + a
 void Test(int _Value)
 {
 	// _Value = 10; 
@@ -59,6 +63,7 @@ int main()
 	sizeof(Plus(20, 30));
 
 	// sizeof(Test(_Value));
+	// 
 	// void는 sizeof 할 수 없다.
 	// sizeof(void);
 
