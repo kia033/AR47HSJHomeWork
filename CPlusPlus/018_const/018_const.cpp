@@ -13,5 +13,7 @@ int main()
 	const int ArrSize = 20;
 
 	int Value[ArrSize] = {};
+
+	printf_s();
 }
 
