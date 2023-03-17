@@ -36,6 +36,20 @@ void TestFunction(int _1, int _2, int _3)
 	//Address2 = (__int64)ValuePtr2;
 }
 
+void TestFunction3(int _1, ...)
+{
+	int* Ptr = &_1;
+
+	while (_1--)
+	{
+		Ptr += 2;
+		int Value = *Ptr;
+
+
+	}
+
+}
+
 
 void TestFunction2(int _1, ...)
 {

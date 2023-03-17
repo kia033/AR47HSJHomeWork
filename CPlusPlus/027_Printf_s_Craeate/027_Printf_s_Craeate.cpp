@@ -27,7 +27,8 @@ int main()
 
 
 	// const char[11]
-	
+	// 
+	// 배열의 마지막이 0으로 끝나지 않기때문에 에러가 뜬다.
 	const char ArrTest[2] = { 'a', 'b' };
 
 	const char* Ptr = "test Print";
