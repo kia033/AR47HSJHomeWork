@@ -37,11 +37,11 @@ int main()
 	if (0);
 
 	{
-		printf_s("실행됩니다1");
+		printf_s("실행됩니다1\n");
 	}
 
 
-	if (printf_s("10"), 0)
+	if (printf_s("10\n"), 0)
 	{
 		printf_s("실행됩니다0");
 	}
