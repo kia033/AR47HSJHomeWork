@@ -22,9 +22,9 @@ int StringCount(const char* _String) // 문자열 수
     }
 
     
-    printf_s("%d", Count);
+    //printf_s("%d", Count);
     putchar('\n');
-    return 4;
+    return Count;
 }
 
 int TrimDelete(char* _String)  // 빈칸 지우기 
@@ -70,17 +70,46 @@ int TrimDelete(char* _String)  // 빈칸 지우기
     }
 
     putchar('\n');
-    return 4;
+    return 0;
 }
 
 int StringToInt(const char* _String) // 문자열을 숫자열로 바꾸기
 {
-    return 4;
+
+    __int64 Address = (__int64)&_String;
+    char* Ptr = (char*)Address;
+    int* IntPtr = (int*)Ptr;
+    int Value0 = *IntPtr;
+
+    int Count = 0;
+
+
+    
+    int Num = 0;
+
+    int& PNum = Num;
+
+    int Result = 0;
+
+    while (0 != _String[Count])
+    {
+        // 앞자리부터 받아온다.
+        // 숫자값으로 한칸씩 밀어내며 값을 넣는다.
+
+        Result = _String[Count] - '0'; // 아스키 코드 값에서 뺀다.
+
+        PNum *= 10;
+        PNum += Result;
+
+        Count++;
+    }
+
+    return Num;
 }
 
 int main()
 {
-    /*int Return0 = StringCount("aaaa");
+    int Return0 = StringCount("aaaa");
     int Return1 = StringCount("aaaa ggg sss");
 
     
@@ -94,8 +123,8 @@ int main()
     printf_s(Arr1);
     TrimDelete(Arr2);
     printf_s(Arr2);
-    */
-
+    
+    
     
     // 영어나 다른글자가 섞여 들어가있는것을 가정하지 않는다.
     int RValue0 = StringToInt("1111");
