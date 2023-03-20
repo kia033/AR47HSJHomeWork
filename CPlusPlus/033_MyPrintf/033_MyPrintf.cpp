@@ -23,6 +23,8 @@ inline void Test(int Value, ...)
 inline int MyPrintf(const char* const _Value, ...) // 인자를 수정하지 않는다.
 {
 
+	// 가상인자 부분 복습
+
 	// const char* const _Value 이므로 &를 달아 내부에서 수정을 하여도 외부에는 영향이 가지 않는다.
 	__int64 Address = (__int64)&_Value; // char을 __int64로 형변환여 인자의 주소값을 불러온다.
 	char* Ptr = (char*)Address; // 포인터 Ptr을 만들고 Address를 char*로 형변환하여 주소값을 받아온다.

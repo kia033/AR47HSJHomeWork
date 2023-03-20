@@ -9,11 +9,6 @@
 // 0을 포함할지 아닐지는 스스로 정하세요
 int StringCount(const char* _String) // 문자열 수 
 {
-    __int64 Address = (__int64)&_String;
-    char* Ptr = (char*)Address;              
-    int* IntPtr = (int*)Ptr;    
-    int Value0 = *IntPtr; 
-
     int Count = 0;
 
     while (0 != _String[Count])
@@ -29,11 +24,6 @@ int StringCount(const char* _String) // 문자열 수
 
 int TrimDelete(char* _String)  // 빈칸 지우기 
 {
-    __int64 Address = (__int64)&_String;
-    char* Ptr = (char*)Address;
-    int* IntPtr = (int*)Ptr;
-    int Value0 = *IntPtr;
-
     char Arr[1024] = {};
     int Count = 0;
     int ArrCount = 0;
@@ -75,16 +65,7 @@ int TrimDelete(char* _String)  // 빈칸 지우기
 
 int StringToInt(const char* _String) // 문자열을 숫자열로 바꾸기
 {
-
-    __int64 Address = (__int64)&_String;
-    char* Ptr = (char*)Address;
-    int* IntPtr = (int*)Ptr;
-    int Value0 = *IntPtr;
-
-    int Count = 0;
-
-
-    
+    int Count = 0;  
     int Num = 0;
 
     int& PNum = Num;
