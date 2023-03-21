@@ -42,36 +42,77 @@ class Player
     void Run()
     {
 
+    // 뛴다.
+    void Run() {
+
     }
 
-    void Damage(const int& _Damage)
+    // 맞는다.
+    void Damage(const int _Damage) {
+
+    }
+
+    // 능력치를 보여준다.
+    void StatusRender()
     {
-
+        printf_s("%s 의 스테이터스 ------------\n", Name);
+        printf_s("공격력 : %d\n", Att);
+        printf_s("체력 : %d\n", Hp);
+        printf_s("---------------------------\n");
     }
 
-    
 
 
 };
 // 이것도 사용자 정의 자료형중 하나이다.
 
 // 자료형
-// 기본 자료형 int bool
-// 사용자 정의 자료형 => 모든 것을 표현할 수 있다.
+// 기본자료형 int bool 
+// 사용자정의 자료형 Player, Monster FightZone => 모든것을 표현할수 있다.
 
 int main()
 {
-    // int 도 기본 클래스이다.
-    // 개념을 생각하고 개념을 class로 정의 내리고
-    // NewPlayer 가 객체이다.
-    Player NewPlayer = Player();
-    int Value = int();
+    // int도 기본클래스입니다.
 
-    
+    // 개념을 생각하고 개념을 class로 정의 내리고
+    // NewPlayer가 객체입니다.
+    Player NewPlayer0 = Player();
+    Player NewPlayer1 = Player();
+    Player NewPlayer2 = Player();
+
+    Player ArrPlayer[3];
+
+    int Value = int();
 
     // 플레이어
     // 공격력
     // 체력
 
+    std::cout << "Hello World!\n";
 }
+
+
+// 플레이어는 이러이러한 존재야.
+//class Player
+//{
+//    const char* const Name = "Player";
+//    int Att;
+//    int Hp; 
+//
+//    void Run() {
+//
+//    }
+//    void Damage(const int _Damage) {
+//
+//    }
+//    void StatusRender()
+//    {
+//        printf_s("%s 의 스테이터스 ------------\n", Name);
+//        printf_s("공격력 : %d\n", Att);
+//        printf_s("체력 : %d\n", Hp);
+//        printf_s("---------------------------\n");
+//    }
+//};// 기본 자료형 int bool
+// 사용자 정의 자료형 => 모든 것을 표현할 수 있다.
+
 

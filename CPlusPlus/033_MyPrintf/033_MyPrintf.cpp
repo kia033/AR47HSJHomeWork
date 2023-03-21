@@ -31,7 +31,7 @@ inline int MyPrintf(const char* const _Value, ...) // 인자를 수정하지 않
 	Ptr += 8;                   // 8바이트 만큼 건너뛰어 첫번째 인자를 넘긴다. // 즉 2번째 인자인 숫자의 주소가 Address에 담긴다
 	int* IntPtr = (int*)Ptr;    // Ptr은 char* 이므로 int*로 형변환하여 InPtr에 복사한다.
 	int Value0 = *IntPtr;       // Value0은 *InPtr 이다.
-	
+
 	//  
 
 
@@ -87,16 +87,16 @@ inline int MyPrintf(const char* const _Value, ...) // 인자를 수정하지 않
 //    Ptr[2]
 // }
 
-void Test(int _1, int, int)
-{
-	__int64 Address = (__int64)&_1;
-	Address += 8;
-	int* _2 = (int*)Address;
-	Address += 8;
-	int* _3 = (int*)Address;
+	void Test(int _1, int, int)
+	{
+		__int64 Address = (__int64)&_1;
+		Address += 8;
+		int* _2 = (int*)Address;
+		Address += 8;
+		int* _3 = (int*)Address;
 
 
-}
+	}
 
 int main()
 {

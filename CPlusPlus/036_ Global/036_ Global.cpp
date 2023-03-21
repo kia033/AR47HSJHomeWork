@@ -16,8 +16,16 @@ int GlobalValue = 0;
 // 어디서든 쓸 수 있는 이유
 // 전역변수는 전부 데이터 영역에 존재한다.
 
-int main()
+void Function()
 {
-    
+    ++GlobalValue;
 }
 
+int main()
+{ // 지역의 시작
+    int Value = 0; // 지역변수라고 합니다.
+
+    Function();
+
+    std::cout << "Hello World!\n";
+} // 지역의 끝

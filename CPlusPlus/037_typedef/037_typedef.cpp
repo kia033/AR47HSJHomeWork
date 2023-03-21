@@ -11,17 +11,26 @@
 // 사용자 정의 자료형의 일종이다.
 // 모든 문법은 인간이 편해지기 위해서 만든것이다.
 
-// time_t
+//typedef __time64_t time_t;
+//typedef __int64                       __time64_t;
 
-// typedef 와 똑같다.
+
+typedef int myint;
+
+typedef myint mymyint;
+
+// 둘의 효과는 똑같고 using 
 using MMInt = int;
 
 int main()
 {
-    // 지역 변수 선언
-    // 최초로 만들어진 시점
+    MMInt Ma = 30;
+
+    // 지역변수 선언
+    // 최초로 만들어진 시점.
     int Value = 20;
 
-
+    time_t DTime = time(0);
+    Value = 20;
 }
 
