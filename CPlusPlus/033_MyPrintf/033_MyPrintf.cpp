@@ -28,7 +28,7 @@ inline int MyPrintf(const char* const _Value, ...) // 인자를 수정하지 않
 	// const char* const _Value 이므로 &를 달아 내부에서 수정을 하여도 외부에는 영향이 가지 않는다.
 	__int64 Address = (__int64)&_Value; // char을 __int64로 형변환여 인자의 주소값을 불러온다.
 	char* Ptr = (char*)Address; // 포인터 Ptr을 만들고 Address를 char*로 형변환하여 주소값을 받아온다.
-	Ptr += 8;                   // 8바이트 만큼 건너뛰어 첫번째 인자를 넘긴다.
+	Ptr += 8;                   // 8바이트 만큼 건너뛰어 첫번째 인자를 넘긴다. // 즉 2번째 인자인 숫자의 주소가 Address에 담긴다
 	int* IntPtr = (int*)Ptr;    // Ptr은 char* 이므로 int*로 형변환하여 InPtr에 복사한다.
 	int Value0 = *IntPtr;       // Value0은 *InPtr 이다.
 	
@@ -49,12 +49,16 @@ inline int MyPrintf(const char* const _Value, ...) // 인자를 수정하지 않
 
 			switch (Format) // 해당 문자열이
 			{
-			case 'd':   // d 라면
+			case 'd':   // d 라면 // %d 숫자열
 			{
-
+				int* ValuePtr = (int*)Address; // 현재 Address는  += 8 을 하여 2번째 인자인 숫자값의 주소를 담고 있다.
+											   // int* ValuePtr = (int*)Address; 포인터 이므로 숫자값을 받아올 수 있다.
+				int Value = *ValuePtr;         // Value 는 2번째 인자인 숫자값을 받아온다.
+				printf_s("%d", Value);         //  %d 는 숫자열출력이므로 int값을 부호있는 10진수 숫자로 표현한다.
+											   // 
 				break;
 			}
-			case 's':   // s 라면
+			case 's':   // s 라면  // %s 문자열
 			{
 
 				break;
@@ -72,6 +76,26 @@ inline int MyPrintf(const char* const _Value, ...) // 인자를 수정하지 않
 	}
 
 	return 0;
+}
+
+//      100 108 116 
+// Test(int 첫번째인자 int 두번째인자 int int int) 
+// {
+// //      100
+//    int* Ptr = &첫번째인자;
+//    Ptr += 2; 첫번째인자
+//    Ptr[2]
+// }
+
+void Test(int _1, int, int)
+{
+	__int64 Address = (__int64)&_1;
+	Address += 8;
+	int* _2 = (int*)Address;
+	Address += 8;
+	int* _3 = (int*)Address;
+
+
 }
 
 int main()
