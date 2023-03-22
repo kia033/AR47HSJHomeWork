@@ -109,6 +109,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "045_NameSpace", "045_NameSp
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "046_BytePadding", "046_BytePadding\046_BytePadding.vcxproj", "{7114062B-5922-40B2-90DD-E6B911B9E908}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Etc", "Etc", "{4334B5DA-F72E-4AD2-98F1-D14C3915849B}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "constEx", "constEx\constEx.vcxproj", "{0D9FDC6F-297C-4010-856D-D238B7E3CF34}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -501,6 +505,14 @@ Global
 		{7114062B-5922-40B2-90DD-E6B911B9E908}.Release|x64.Build.0 = Release|x64
 		{7114062B-5922-40B2-90DD-E6B911B9E908}.Release|x86.ActiveCfg = Release|Win32
 		{7114062B-5922-40B2-90DD-E6B911B9E908}.Release|x86.Build.0 = Release|Win32
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34}.Debug|x64.ActiveCfg = Debug|x64
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34}.Debug|x64.Build.0 = Debug|x64
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34}.Debug|x86.ActiveCfg = Debug|Win32
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34}.Debug|x86.Build.0 = Debug|Win32
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34}.Release|x64.ActiveCfg = Release|x64
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34}.Release|x64.Build.0 = Release|x64
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34}.Release|x86.ActiveCfg = Release|Win32
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -508,6 +520,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{924874CF-7796-4BCD-81BF-40EAEBA42B3E} = {6086D6D8-BA53-4024-B791-8CAC048AA7C5}
 		{A993E6E9-AEEB-4C94-86A3-268CCCA7FBE3} = {6086D6D8-BA53-4024-B791-8CAC048AA7C5}
+		{0D9FDC6F-297C-4010-856D-D238B7E3CF34} = {4334B5DA-F72E-4AD2-98F1-D14C3915849B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {405EF82A-9D08-4308-9943-5DA02BB57705}
