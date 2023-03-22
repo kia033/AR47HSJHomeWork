@@ -28,10 +28,10 @@ public:
     // 8바이트 이하 가장큰 바이트의 자료형을 찾아요.
     // 4바이트
     // 먼저 4바이트를 할당했다고 쳐보자
-    // 딱맞거나 들어갈수 있으면 그대로 픽스
-    // 4바이트 할당한다.
-    // char
-    // 8바이트
+    // 딱맞거나 들어갈수 있으면 채운다.
+    // 만약 들어갈 공간이 되지않는다면 빈 공간을 건너뛰고 새 공간을 만들어 넣는다.
+    // 
+    // 
 };
 
 inline void Test(Player Value, ...)
@@ -41,6 +41,8 @@ inline void Test(Player Value, ...)
 
 
     // 0번에 int 4번에 short 6번에 int 10번에 short 12번에 char
+
+    // 
     char Value0 = Ptr[0];
     char Valuea = Ptr[1];
     char Valueb = Ptr[2];
