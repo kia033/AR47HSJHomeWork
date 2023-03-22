@@ -5,6 +5,7 @@
 #include <conio.h>
 
 
+
 class Object
 {
     //private:
@@ -18,7 +19,6 @@ public:
     {
         return Player = true;
     }
-
     bool GetPlayer()
     {
         return Player;
@@ -31,13 +31,11 @@ public:
             ObjectName[Count] = _Name[Count];
         }
     }
-    
-
+   
     void SetHp(int _Hp)
     {
         ObjectHp = _Hp;
     }
-
     void SetAtt(int _Att)
     {
         ObjectAtt = _Att;
@@ -47,49 +45,48 @@ public:
     {
         return ObjectHp;
     }
-
     int GetAtt()
     {
         return ObjectAtt;
     }
 
     int AttackHp(int _Att)
-    {
-       return ObjectHp -= _Att;
-    }
+        {
+            return ObjectHp -= _Att;
+        }
 
     void StatusRender()
-    {
-        printf_s("%s의 스테이터스 ------------\n", ObjectName);
-        printf_s("공격력 : %d\n", ObjectAtt);
-        printf_s("체력 : %d\n", ObjectHp);
-        printf_s("---------------------------\n");
-    }
-
-    void Damage(Object& _AttObject, Object& _DefObject)
-    {
-        system("cls");
-        _DefObject.SetHp(_DefObject.AttackHp(ObjectAtt));
-
-        if (GetPlayer())
         {
-            StatusRender();
-            _DefObject.StatusRender();
-            printf_s("%s가 공격을 시작합니다\n", ObjectName);
-            printf_s("%s가 %d의 데미지를 입었습니다.\n", _DefObject.ObjectName, GetAtt());
-        }
-        else
-        {
-            _DefObject.StatusRender();
-            StatusRender();
-            printf_s("%s가 공격을 시작합니다\n", _DefObject.ObjectName);
-            printf_s("%s가 %d의 데미지를 입었습니다.\n", ObjectName, _DefObject.GetAtt());
-            printf_s("%s가 공격을 시작합니다\n", ObjectName);
-            printf_s("%s가 %d의 데미지를 입었습니다.\n", _DefObject.ObjectName, GetAtt());
+            printf_s("%s의 스테이터스 ------------\n", ObjectName);
+            printf_s("공격력 : %d\n", ObjectAtt);
+            printf_s("체력 : %d\n", ObjectHp);
+            printf_s("---------------------------\n");
         }
 
-    }
+    void Damage(Object & _AttObject, Object & _DefObject)
+        {
+            system("cls");
+            _DefObject.SetHp(_DefObject.AttackHp(ObjectAtt));
 
+            if (GetPlayer())
+            {
+                StatusRender();
+                _DefObject.StatusRender();
+                printf_s("%s가 공격을 시작합니다\n", ObjectName);
+                printf_s("%s가 %d의 데미지를 입었습니다.\n", _DefObject.ObjectName, GetAtt());
+            }
+            else
+            {
+                _DefObject.StatusRender();
+                StatusRender();
+                printf_s("%s가 공격을 시작합니다\n", _DefObject.ObjectName);
+                printf_s("%s가 %d의 데미지를 입었습니다.\n", ObjectName, _DefObject.GetAtt());
+                printf_s("%s가 공격을 시작합니다\n", ObjectName);
+                printf_s("%s가 %d의 데미지를 입었습니다.\n", _DefObject.ObjectName, GetAtt());
+            }
+
+        }
+  
 };
 
 int main()
@@ -123,11 +120,8 @@ int main()
         Player.StatusRender();
         Monster.StatusRender();
         _getch();
-
         Player.Damage(Player, Monster);
         _getch();
-
-
 
         if (0 >= Monster.GetHp())
         {
@@ -136,10 +130,8 @@ int main()
             _getch();
             break;
         }
-
         Monster.Damage(Monster, Player);
         _getch();
-
         if (0 >= Player.GetHp())
         {
             printf_s("플레이어가 죽었습니다.");

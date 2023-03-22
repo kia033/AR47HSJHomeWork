@@ -39,11 +39,10 @@ class Player
     // 행동 => 보통 동사
     // 맞을 수 있어야 한다.
     // 뛸 수 있어야 한다.
-    void Run()
-    {
 
     // 뛴다.
-    void Run() {
+    void Run() 
+    {
 
     }
 

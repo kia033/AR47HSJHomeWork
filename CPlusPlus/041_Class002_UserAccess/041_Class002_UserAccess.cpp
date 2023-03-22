@@ -48,6 +48,12 @@ int main()
 
     Player NewPlayer = Player();
 
+    // 보통 행동을 만들 public으로 만듭니다.
+    // NewPalyer.Att
+
+    // 객체의 사용법 . 누르고 
+    // 플레이어 내부에 있는 것들을 끄접어 내서 사용한다.
+    // NewPlayer.Att 
 
 
 
