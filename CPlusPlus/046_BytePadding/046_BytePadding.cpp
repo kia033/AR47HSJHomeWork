@@ -44,10 +44,10 @@ inline void Test(Player Value, ...)
 
     // 
     char Value0 = Ptr[0];
-    char Valuea = Ptr[1];
-    char Valueb = Ptr[2];
-    char Valuec = Ptr[3];
-    char Valued = Ptr[4];
+    char Valuea = Ptr[4];
+    char Valueb = Ptr[8];
+    char Valuec = Ptr[12];
+    char Valued = Ptr[14];
 
     int a = 0;
 
@@ -55,9 +55,22 @@ inline void Test(Player Value, ...)
 
 int main()
 {
-
+    // 500번지의 플레이어를 대표하는 NewPlayer
     Player NewPlayer;
 
+    // 플레이어 풀네임을 만들어주는 용도
+    // 99%의 경우 FullName을 사용하지 않고 그냥 약칭으로 사용한다.
+    NewPlayer./*Player::*/Hp;
+    NewPlayer.Hp;
+
+    // 일반적으로 멤버변수일 경우에는 아무런 의미도 없어요.
+    // Player::Hp;
+    
+
+
+    // 일반적인 멤버변수를 ::통해서 사용할 순 없다.
+    // Plyaer::Hp;
+    // NewPlayer.Hp;
 
     Test(NewPlayer);
     int* Ptr = &NewPlayer.Hp;
