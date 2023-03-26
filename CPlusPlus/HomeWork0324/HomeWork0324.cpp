@@ -18,8 +18,9 @@
 // 안해도 되는 숙제 
 // 질문했을때 안받아줄겁니다.
 
-// 숙제 3
-// 장애물 만들고 배치하세요 당연히 플레이어는 거기로 못갑니다.
+// 숙제 3 V
+// 장애물 만들고 배치하세요 당연히 플레이어는 거기로 못갑니다. 
+// 장애물은 X
 
 // 숙제 4
 // 폭탄 f를 누를면 폭탄이 설치되고 눈에 보여야 합니다. 폭탄 @
@@ -36,8 +37,8 @@
 
 int main()
 {
-	const int ScreenYSize = 10;
-	const int ScreenXSize = 10;
+	const int ScreenYSize = 5;
+	const int ScreenXSize = 5;
 
 	char Arr[ScreenYSize][ScreenXSize] = { 0, };
 
@@ -47,6 +48,8 @@ int main()
 	int PlayerY = ScreenYSize / 2; // 세로 중간
 	int PlayerX = ScreenXSize / 2; // 가로  중간
 
+	int BoomCount = 3;
+
 	while (true)
 	{
 		system("cls");
@@ -55,6 +58,14 @@ int main()
 		{
 			for (size_t x = 0; x < ScreenXSize; x++)
 			{
+				if (y == 1 || y == 3)
+				{
+					if (x == 1 || x == 3)
+					{
+						Arr[y][x] = 'X';
+						continue;
+					}
+				}
 				Arr[y][x] = 'a';
 			}
 		}
@@ -69,6 +80,9 @@ int main()
 			}
 			printf_s("\n");
 		}
+
+		printf_s("---------\n");
+		printf_s("폭탄 : %d", BoomCount);
 
 
 		// 이건 내가 키를 눌렀다면 1
@@ -92,32 +106,71 @@ int main()
 		// 0 10 20 30 40 50 60 70 80 90 100 왼쪽
 		// 9 19 29 39 49 59 69 79 89 99 109 오른쪽
 
+		// 플레이어가 이동할 다음 위치 계산
+		int LeftPlayerX = PlayerX - 1;
+		int RightPlayerX = PlayerX + 1;
+
+		int UpPlayerY = PlayerY - 1;
+		int DownPlayerY = PlayerY + 1;
+
 		switch (Ch)
 		{
 		case 'a':
 		case 'A':
-			if (PlayerX != 0)
+
+			if (PlayerY == 1 || PlayerY == 3)
+			{
+				if (LeftPlayerX == 1 || LeftPlayerX == 3)
+				{
+					break;
+				}
+			}
+
+			else if (PlayerX != 0)
 			{
 				PlayerX -= 1;
 			}
 			break;
 		case 'd':
 		case 'D':
-			if (PlayerX != ScreenXSize - 1)
+
+			if (PlayerY == 1 || PlayerY == 3)
+			{
+				if (RightPlayerX == 1 || RightPlayerX == 3)
+				{
+					break;
+				}
+			}
+
+			else if (PlayerX != ScreenXSize - 1)
 			{
 				PlayerX += 1;
 			}
 			break;
 		case 'w':
 		case 'W':
-			if (PlayerY != 0)
+			if (PlayerX == 1 || PlayerX == 3  )
+			{
+				if (UpPlayerY == 1 || UpPlayerY == 3)
+				{
+					break;
+				}
+			}
+			else if (PlayerY != 0)
 			{
 				PlayerY -= 1;
 			}
 			break;
 		case 's':
 		case 'S':
-			if (PlayerY != ScreenYSize - 1)
+			if (PlayerX == 1 || PlayerX == 3)
+			{
+				if (DownPlayerY == 1 || DownPlayerY == 3)
+				{
+					break;
+				}
+			}
+			else if (PlayerY != ScreenYSize - 1)
 			{
 				PlayerY += 1;
 			}
