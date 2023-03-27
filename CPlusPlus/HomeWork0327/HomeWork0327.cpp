@@ -172,8 +172,6 @@ public:
 
 		int2 PlayerPos = GetPos();
 
-		
-
 		switch (Ch)
 		{
 		case 'a':
