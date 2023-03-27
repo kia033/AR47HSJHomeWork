@@ -6,6 +6,21 @@
 // 운영체제가 도와줄수밖에 없다.
 #include <Windows.h>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // 숙제 0 V
 // 상하좌우로 다 움직이게 해주세요. 
 
@@ -54,6 +69,7 @@ int main()
 	{
 		system("cls");
 
+
 		for (size_t y = 0; y < ScreenYSize; y++)
 		{
 			for (size_t x = 0; x < ScreenXSize; x++)
@@ -84,7 +100,7 @@ int main()
 		printf_s("---------\n");
 		printf_s("폭탄 : %d", BoomCount);
 
-
+		
 		// 이건 내가 키를 눌렀다면 1
 		// 아니라면 0을 리턴하는 함수고 정지하지 않습니다.
 		// 키를 눌렀다는것을 체크해주는 함수
