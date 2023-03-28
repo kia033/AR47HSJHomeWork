@@ -73,7 +73,7 @@ public:
 	}
 
 	// 이녀석을 무조건 사용해서 플레이어가 바깥으로 못나가게 만드세요.
-	bool IsScreenOver(const int2& _Pos)
+	bool IsScreenOver(const int2& _Pos) const
 	{
 		if (0 > _Pos.X)
 		{
@@ -98,7 +98,7 @@ public:
 		return false;
 	}
 
-	bool IsScreenOver(const int _PosX, const int _PosY)
+	bool IsScreenOver(const int& _PosX, const int& _PosY) const
 	{
 		if (0 > _PosX)
 		{
