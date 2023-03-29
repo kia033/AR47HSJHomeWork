@@ -13,10 +13,10 @@ int main()
 	// 방향 상관 없음.
 	// 총알 클래스를 만든다.
 	// 플레이어가 여러분들이 지정한 키를 누르르면 
+	// 3번 움직이고 해제
 
-	Bullet NewBullet;
-
-	Player NewPlayer = Player();
+	Bullet NewBullet = Bullet();
+	Player NewPlayer = Player(NewBullet);
 	int2 ScreenSize = ConsoleGameScreen::GetMainScreen().GetScreenSize();
 	NewPlayer.SetPos(ScreenSize.Half());
 
@@ -27,10 +27,26 @@ int main()
 		ConsoleGameScreen::GetMainScreen().ScreenClear();
 
 		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(NewPlayer.GetPos(), '*');
+		if (NewPlayer.IsFire() && NewPlayer.GetCount() < 4)
+		{
+			NewPlayer.Shot();
+			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(NewBullet.GetPos(), '@');
+			NewPlayer.UpCount();
 
+			if (NewPlayer.GetCount() >= 4)
+			{
+				NewPlayer.InitCount();
+				NewPlayer.FireEnd();
+			}
+		}
 		ConsoleGameScreen::GetMainScreen().ScreenPrint();
 
+
 		NewPlayer.Input();
+
+
+
+
 
 	}
 }
