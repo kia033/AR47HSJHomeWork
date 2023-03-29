@@ -84,7 +84,7 @@ public:
 
 int main()
 {
-    int A = 'a';
+    int A = 'a'; // 암시적 형변환
     short B = 'a';
 
     Function('a');

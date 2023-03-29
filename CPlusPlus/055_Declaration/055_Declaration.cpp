@@ -18,10 +18,6 @@ void Function1();
 void Function2();
 void Function2();
 void Function2();
-void Function2();
-void Function2();
-void Function2();
-void Function2();
 
 // 클래스는 문법상 선언과 구현이 내부에서 혼재되어있을수도 있고
 // 아닐수도 있는 특이한 놈이라서

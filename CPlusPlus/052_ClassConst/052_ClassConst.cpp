@@ -13,6 +13,7 @@
 class Player
 {
 public:
+
     void SetHp(int _Value)
     {
         Hp = _Value;
