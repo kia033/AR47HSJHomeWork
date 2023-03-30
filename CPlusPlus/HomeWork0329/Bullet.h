@@ -28,7 +28,6 @@ public:
 protected:
 
 private:
-	static const int InterFrame = 100;
 
 	char ChBullet = 'w'; // 플레이어가 마지막으로 움직인 방향 // 기본값 w
 

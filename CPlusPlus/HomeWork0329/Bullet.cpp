@@ -17,9 +17,6 @@ void Bullet::Fire()
 
 
 	int2 NextPos = { 0, 0 };
-
-
-		Sleep(InterFrame);
 		switch (ChBullet)
 		{
 		case 'a':
