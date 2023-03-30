@@ -1,21 +1,25 @@
 #pragma once
 #include "ConsoleGameMath.h"
+#include "ShotingGame.h"
 
+class Player;
 class ConsoleGameScreen;
 class Bullet
 {
 public:
-	Bullet();
+	static const int ArrBulletCount = 10;
+
+	static Bullet* GetArrBullet()
+	{
+		return ArrBullet;
+	}
+
+	static void AllRender();
+	static void AllUpdate();
 
 	inline void SetPos(const int2& _Value)
 	{
 		Pos = _Value;
-	}
-
-	inline void SetPlayerChPos(const char _Value)
-	{
-
-		ChBullet = _Value;
 	}
 
 	inline int2 GetPos() const
@@ -23,17 +27,28 @@ public:
 		return Pos;
 	}
 
-	void Fire(); // 총알이 움직이는 부분
+	inline bool IsFire() const
+	{
+		return Fire;
+	}
+
+	inline void FireOn()
+	{
+		Fire = true;
+	}
+
+	void Update();
+	void Render();
 
 protected:
 
 private:
+	static Bullet ArrBullet[Bullet::ArrBulletCount];
 
-	char ChBullet = 'w'; // 플레이어가 마지막으로 움직인 방향 // 기본값 w
+	Bullet();
 
+	bool Fire = false;
 
-	int2 Pos = int2(0,0);
-
+	int2 Pos = int2(0, 0);
 };
-
 

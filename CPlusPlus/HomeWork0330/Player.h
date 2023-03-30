@@ -2,11 +2,12 @@
 #include "ConsoleGameMath.h"
 
 class ConsoleGameScreen;
-class Bullet;
 class Player
 {
 public:
-	Player(Bullet& _Value);
+
+
+	Player();
 
 	inline void SetPos(const int2& _Value)
 	{
@@ -18,55 +19,32 @@ public:
 		return Pos;
 	}
 
-	inline int GetCount() const
-	{
-		return Count;
-	}
-
-	inline void UpCount()
-	{
-		Count++;
-	}
-
-	inline void InitCount()
-	{
-		Count = 0;
-	}
-
 	void Input();
 
-	// 이상적인 방법은 보통 이걸 추천한다.
-	// 
-	inline bool IsFire()
+	void Render();
+
+	int GetFireCount() const
 	{
-		return Fire;
-	}
-	
-	inline bool FireEnd()
-	{
-		return Fire = false;
+		return FireCount;
 	}
 
-	void Shot();
-
-	//void Test(Bullet Test) 
-	//{
-
-	//}
+	// 전방선언은 이렇게 해도 된다.
+	void SetBulletArr(class Bullet* _BulletPtr)
+	{
+		BulletPtr = _BulletPtr;
+	}
 
 protected:
 
 private:
 	static const int InterFrame = 200;
 
-	bool Fire = false;
-
-	 int Count = 0;
-
 	int2 Pos = int2(0, 0);
 
+	static int FireCount;
 
-	Bullet* Bullet0;
+
+	Bullet* BulletPtr;
 
 	// 이런 구조를 Has a라고 한다. Player Has a Bullet
 	// Bullet NewBullet; // 플레이어의 신체 내부에 총알 한발이 있다.

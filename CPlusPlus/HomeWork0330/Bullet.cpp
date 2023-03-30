@@ -2,64 +2,55 @@
 #include "ConsoleGameScreen.h"
 #include <conio.h>
 #include <Windows.h>
+#include "Player.h"
+
+Bullet Bullet::ArrBullet[Bullet::ArrBulletCount];
+
+
+void Bullet::AllRender()
+{
+	for (size_t i = 0; i < Bullet::ArrBulletCount; i++)
+	{
+		if (false == ArrBullet[i].IsFire())
+		{
+			continue;
+		}
+
+		ArrBullet[i].Render();
+	}
+
+}
+
+void Bullet::AllUpdate()
+{
+	for (size_t i = 0; i < Bullet::ArrBulletCount; i++)
+	{
+		if (false == ArrBullet[i].IsFire())
+		{
+			continue;
+		}
+
+		ArrBullet[i].Update();
+	}
+}
 
 Bullet::Bullet()
 {
-	
+
 }
-// 화면바깥으로 못나가게 하세요. 
-void Bullet::Fire()
+
+void Bullet::Render()
 {
-	if (!ChBullet)
+	if (true == Fire)
 	{
-		return;
+		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Pos, '^');
 	}
+}
 
-
-	int2 NextPos = { 0, 0 };
-		switch (ChBullet)
-		{
-		case 'a':
-		case 'A':
-			NextPos = Pos;
-			NextPos.X -= 1;
-			if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
-			{
-				Pos.X -= 1;
-			}
-			break;
-		case 'd':
-		case 'D':
-			NextPos = Pos;
-			NextPos.X += 1;
-			if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
-			{
-				Pos.X += 1;
-			}
-			break;
-		case 'w':
-		case 'W':
-			NextPos = Pos;
-			NextPos.Y -= 1;
-			if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
-			{
-				Pos.Y -= 1;
-			}
-			break;
-		case 's':
-		case 'S':
-			NextPos = Pos;
-			NextPos.Y += 1;
-			if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
-			{
-				Pos.Y += 1;
-			}
-			break;
-		default:
-			break;
-		}
-
-
-
-
+void Bullet::Update()
+{
+	if (true == Fire)
+	{
+		--Pos.Y;
+	}
 }

@@ -1,5 +1,7 @@
 #include "ConsoleGameScreen.h"
 #include <iostream>
+#include "Bullet.h"
+#include "Player.h"
 
 ConsoleGameScreen ConsoleGameScreen::MainScreen;
 

@@ -3,14 +3,20 @@
 #include <conio.h>
 #include <Windows.h>
 #include "Bullet.h"
+#include <iostream>
 
-Player::Player(Bullet& _Value)
+int Player::FireCount = Bullet::ArrBulletCount;
+
+Player::Player()
 {
-	Bullet0 = &_Value;
+
 }
 // 화면바깥으로 못나가게 하세요. 
 void Player::Input()
 {
+	printf_s("\n");
+	printf_s("총알 : %d / %d", Player::FireCount, Bullet::ArrBulletCount);
+
 	if (0 == _kbhit())
 	{
 		// 0.5초간 멈춘다.
@@ -33,11 +39,6 @@ void Player::Input()
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
 			Pos.X -= 1;
-			if (!Fire)
-			{
-				Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
-			}
-
 		}
 		break;
 	case 'd':
@@ -46,12 +47,7 @@ void Player::Input()
 		NextPos.X += 1;
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
-			Pos.X += 1;			
-			if (!Fire)
-			{
-				Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
-			}
-
+			Pos.X += 1;
 		}
 		break;
 	case 'w':
@@ -61,11 +57,6 @@ void Player::Input()
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
 			Pos.Y -= 1;
-			if (!Fire)
-			{
-				Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
-			}
-
 		}
 		break;
 	case 's':
@@ -75,21 +66,21 @@ void Player::Input()
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
 			Pos.Y += 1;
-			if (!Fire)
-			{
-				Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
-			}
-
 		}
 		break;
 	case 'f':
 	case 'F':
-		if (!IsFire()) // 총을 쏜 상태가 아니라면 
+		if (FireCount >  0)
 		{
-			Fire = true;
-			Bullet0->SetPos(Pos); // 현재 플레이어의 위치가 총알의 시작 위치
+			BulletPtr[FireCount - 1].SetPos(Pos);
+			BulletPtr[FireCount - 1].FireOn();
+			FireCount--;
 		}
 		break;
+	/*case 'r': // 총알 채워주기
+	case 'R':
+		FireCount = Bullet::ArrBulletCount;
+		break;*/
 	default:
 		break;
 	}
@@ -97,15 +88,8 @@ void Player::Input()
 	Sleep(InterFrame);
 }
 
-void Player::Shot()
+
+void Player::Render()
 {
-	if (!Fire)
-	{
-		return;
-	}
-
-	Bullet0->Fire();
-
-
-
+	ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Pos, '*');
 }
