@@ -42,7 +42,7 @@ int main()
 		ConsoleGameScreen::GetMainScreen().ScreenPrint(); // 화면에 플레이어나 또는 총알 출력
 
 
-		NewPlayer.Input(); // 플레이어 이동 입력
+		NewPlayer.Input(); // 플레이어 입력
 
 
 
