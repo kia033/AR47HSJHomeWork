@@ -33,7 +33,10 @@ void Player::Input()
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
 			Pos.X -= 1;
-			Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
+			if (!Fire)
+			{
+				Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
+			}
 
 		}
 		break;
@@ -43,8 +46,11 @@ void Player::Input()
 		NextPos.X += 1;
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
-			Pos.X += 1;
-			Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
+			Pos.X += 1;			
+			if (!Fire)
+			{
+				Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
+			}
 
 		}
 		break;
@@ -55,7 +61,10 @@ void Player::Input()
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
 			Pos.Y -= 1;
-			Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
+			if (!Fire)
+			{
+				Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
+			}
 
 		}
 		break;
@@ -66,7 +75,10 @@ void Player::Input()
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
 			Pos.Y += 1;
-			Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
+			if (!Fire)
+			{
+				Bullet0->SetPlayerChPos(Ch); // 플레이어가 움직인 방향을 총알에 전달.
+			}
 
 		}
 		break;

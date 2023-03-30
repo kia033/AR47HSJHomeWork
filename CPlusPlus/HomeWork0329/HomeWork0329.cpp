@@ -22,21 +22,21 @@ int main()
 
 	while (true)
 	{
-		system("cls");
+		system("cls"); // 화면을 지운다
 
-		ConsoleGameScreen::GetMainScreen().ScreenClear();
+		ConsoleGameScreen::GetMainScreen().ScreenClear();       // 움직일 수 있는 공간을 a로 채운다.
 
-		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(NewPlayer.GetPos(), '*');
-		if (NewPlayer.IsFire() && NewPlayer.GetCount() < 4)
+		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(NewPlayer.GetPos(), '*');  // 플레이어의 위치는 *로 표기
+		if (NewPlayer.IsFire())  // 플레이어가 총을 쏜 상태라면
 		{
-			NewPlayer.Shot();
-			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(NewBullet.GetPos(), '@');
-			NewPlayer.UpCount();
+			NewPlayer.Shot(); // 총알을 이동
+			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(NewBullet.GetPos(), '@'); // 총알의 위치는 @로 표기
+			NewPlayer.UpCount(); // 총알 타이머 카운트
 
-			if (NewPlayer.GetCount() >= 4)
+			if (NewPlayer.GetCount() >= 4) // 4번 움직이면
 			{
-				NewPlayer.InitCount();
-				NewPlayer.FireEnd();
+				NewPlayer.InitCount(); // 카운트 초기화
+				NewPlayer.FireEnd();  // 총 발사 종료
 			}
 		}
 		ConsoleGameScreen::GetMainScreen().ScreenPrint();

@@ -14,6 +14,7 @@ public:
 
 	inline void SetPlayerChPos(const char _Value)
 	{
+
 		ChBullet = _Value;
 	}
 

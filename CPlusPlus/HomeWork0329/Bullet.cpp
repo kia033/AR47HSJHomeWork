@@ -20,7 +20,6 @@ void Bullet::Fire()
 
 
 		Sleep(InterFrame);
-		//ConsoleGameScreen::GetMainScreen().SetScreenCharacter(GetPos(), '@');
 		switch (ChBullet)
 		{
 		case 'a':
