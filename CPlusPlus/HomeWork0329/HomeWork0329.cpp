@@ -39,10 +39,10 @@ int main()
 				NewPlayer.FireEnd();  // 총 발사 종료
 			}
 		}
-		ConsoleGameScreen::GetMainScreen().ScreenPrint();
+		ConsoleGameScreen::GetMainScreen().ScreenPrint(); // 화면에 플레이어나 또는 총알 출력
 
 
-		NewPlayer.Input();
+		NewPlayer.Input(); // 플레이어 이동 입력
 
 
 
