@@ -3,20 +3,14 @@
 #include <conio.h>
 #include <Windows.h>
 #include "Bullet.h"
-#include <iostream>
-
-int Player::FireCount = Bullet::ArrBulletCount;
 
 Player::Player()
 {
-
+	RenderChar = '*';
 }
 // È­¸é¹Ù±ùÀ¸·Î ¸ø³ª°¡°Ô ÇÏ¼¼¿ä. 
 void Player::Input()
 {
-	printf_s("\n");
-	printf_s("ÃÑ¾Ë : %d / %d", Player::FireCount, Bullet::ArrBulletCount);
-
 	if (0 == _kbhit())
 	{
 		// 0.5ÃÊ°£ ¸ØÃá´Ù.
@@ -70,17 +64,10 @@ void Player::Input()
 		break;
 	case 'f':
 	case 'F':
-		if (FireCount >  0)
-		{
-			BulletPtr[FireCount - 1].SetPos(Pos);
-			BulletPtr[FireCount - 1].FireOn();
-			FireCount--;
-		}
+	{
+		ShotUpdate();
 		break;
-	/*case 'r': // ÃÑ¾Ë Ã¤¿öÁÖ±â
-	case 'R':
-		FireCount = Bullet::ArrBulletCount;
-		break;*/
+	}
 	default:
 		break;
 	}
@@ -88,8 +75,15 @@ void Player::Input()
 	Sleep(InterFrame);
 }
 
-
-void Player::Render()
+void Player::ShotUpdate()
 {
-	ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Pos, '*');
+	Bullet& NewBullet = BulletPtr[BulletCount];
+	NewBullet.SetPos(Pos);
+	NewBullet.On();
+
+	++BulletCount;
+	if (BulletCount >= Bullet::ArrBulletCount)
+	{
+		BulletCount = 0;
+	}
 }

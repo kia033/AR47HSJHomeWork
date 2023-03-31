@@ -14,13 +14,22 @@
     <ClCompile Include="Player.cpp">
       <Filter>Level2</Filter>
     </ClCompile>
-    <ClCompile Include="ShotingGame.cpp">
+    <ClCompile Include="ShootingGame.cpp">
       <Filter>Level2</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>Level2</Filter>
+    </ClCompile>
+    <ClCompile Include="ConsoleGameObject.cpp">
+      <Filter>Level1</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConsoleGameMath.h">
       <Filter>Level0</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleGameScreen.h">
+      <Filter>Level1</Filter>
     </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>Level2</Filter>
@@ -28,22 +37,25 @@
     <ClInclude Include="Player.h">
       <Filter>Level2</Filter>
     </ClInclude>
-    <ClInclude Include="ConsoleGameScreen.h">
-      <Filter>Level1</Filter>
-    </ClInclude>
-    <ClInclude Include="ShotingGame.h">
+    <ClInclude Include="ShootingGame.h">
       <Filter>Level2</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>Level2</Filter>
+    </ClInclude>
+    <ClInclude Include="ConsoleGameObject.h">
+      <Filter>Level1</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Level0">
-      <UniqueIdentifier>{0bc40df9-8b96-461e-8404-a8b9597f7e44}</UniqueIdentifier>
+      <UniqueIdentifier>{0b0c6d8b-6c38-43f4-a42f-2c6f28fb573e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level1">
-      <UniqueIdentifier>{41563c8c-dd55-413b-abb2-fae617a5c245}</UniqueIdentifier>
+      <UniqueIdentifier>{7d8ab842-a74e-41ea-bb38-73901e19e228}</UniqueIdentifier>
     </Filter>
     <Filter Include="Level2">
-      <UniqueIdentifier>{ea73ac8d-eadf-4929-bffa-22ff7692164b}</UniqueIdentifier>
+      <UniqueIdentifier>{7ab2c38a-a005-4062-a23a-bff102349bee}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
