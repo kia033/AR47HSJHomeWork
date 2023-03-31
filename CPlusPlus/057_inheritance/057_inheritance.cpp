@@ -77,6 +77,9 @@ public:
 };
 
 // 나는 아이템을 상속받겠다
+// 상속 받는 코드들의 접근제한 지정자의 최대치를 protected로 만든다.
+// public 이던 int Gold = 0; 을
+// protected로  바꾼다.
 class Potion : protected Item
 {
 //protected: 
@@ -124,6 +127,6 @@ int main()
     Armor NewArmor;
 
     NewWeapon.Gold = 20;
-    // NewPotion.Gold = 10;
+    //NewPotion.Gold = 10;
 
 }

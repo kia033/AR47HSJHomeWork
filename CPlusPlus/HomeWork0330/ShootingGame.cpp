@@ -28,7 +28,7 @@ void ShootingGame::Loading()
 
 	for (int i = 0; i < ArrMonsterCount; i++)
 	{
-		ArrMonster[i].SetPos({i + 3, 1});
+		ArrMonster[i].SetPos({2, i});
 	}
 
 }
@@ -36,29 +36,43 @@ void ShootingGame::Loading()
 void ShootingGame::Collision()
 {
 
+	// BulletArr는 생성한 총알의 주소값을 갖게 된다
 	Bullet* BulletArr = Bullet::GetArrBullet();
 
-	// 모든 총알과
+	// 모든 총알을  0부터 체크한다.
 	for (size_t BulletIndex = 0; BulletIndex < Bullet::ArrBulletCount; BulletIndex++)
 	{
+		// CurBullet 은 BulletIndex 번째에 해당하는 총알이다.
 		Bullet& CurBullet = BulletArr[BulletIndex];
-
+		
+		// 총알이 발사되어 UpdateValue의 값이 true인지 체크한다.
+		// 발사되었다면 true, 발사되지 않았다면 false이다.
+		// 만약 총알이 발사되지 않았다면 continue한다.
 		if (false == CurBullet.IsUpdate())
 		{
 			continue;
 		}
 
+		// 여기까지 왔다면 해당 총알은 true로 발사된 상태이다.
+		// 몬스터를 0부터 체크한다.
 		for (size_t MonsterIndex = 0; MonsterIndex < ShootingGame::ArrMonsterCount; MonsterIndex++)
 		{
+			//  CurMonster 는 MonsterIndex 번째의 몬스터이다.
 			Monster& CurMonster = ArrMonster[MonsterIndex];
 
+			// 몬스터가 출력되고 있는지 체크한다.
+			// 몬스터가 죽어서 출력되고있지 않는다면
+			// continue한다.
 			if (false == CurMonster.IsUpdate())
 			{
 				continue;
 			}
 
+			// 여기까지 왔다면 몬스터도 true이다.
+			// 출력된 상태의 총알과 몬스터의 위치가 동일하다면
 			if (CurMonster.GetPos() == CurBullet.GetPos())
 			{
+				// 총알과 몬스터의 출력을 false로 바꾼다. / 없앤다.
 				CurMonster.Off();
 				CurBullet.Off();
 			}
