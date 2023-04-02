@@ -28,7 +28,7 @@ void ShootingGame::Loading()
 
 	for (int i = 0; i < ArrMonsterCount; i++)
 	{
-		ArrMonster[i].SetPos({2, i});
+		ArrMonster[i].SetPos({2+i, i});
 	}
 
 }
@@ -83,7 +83,7 @@ void ShootingGame::Collision()
 
 void ShootingGame::MonsterEndCheck()
 {
-	// 1. 움직이게 한다.
+	// 1. 움직이게 한다. v
 
 	// 2. 끝에 어떠한 몬스터중 단 1개라도 닿았는지 확인한다.
 	//    2-1. 왼쪽 끝을체크한다.
