@@ -127,7 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ADefaultClass.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="constEx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ADefaultClass.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

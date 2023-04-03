@@ -18,5 +18,13 @@
     <ClCompile Include="constEx.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="ADefaultClass.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ADefaultClass.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

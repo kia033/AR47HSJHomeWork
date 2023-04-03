@@ -17,7 +17,7 @@ void PlayerMove()
 }
 
 // 문법적으로도 어려워하는 부분이고.
-// 행동을 변수로 마드는 것입니다.
+// 행동을 변수로 만드는 것입니다.
 
 class PlayerMoveButton
 {
@@ -108,7 +108,7 @@ int main()
 		PtrTest[0]();
 		int Size = sizeof(PtrTest);
 
-		// ArrTest = void(*[])()
+		// ArrFunction = void(*[])()
 		// PtrTest = void(**)()
 		// *PtrTest = void(*)()
 		// PtrTest[0] = void(*)()
