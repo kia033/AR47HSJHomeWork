@@ -12,9 +12,6 @@ void Monster::Update()
 	{
 		return;
 	}
-
-	Xmove();
-	Ymove();
 }
 
 void Monster::Xmove()

@@ -10,6 +10,7 @@ public:
 	void Xmove();
 	void Ymove();
 
+private:
 	void XmoveEndCheck();
 	void YmoveEndCheck();
 
