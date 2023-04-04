@@ -83,11 +83,11 @@ void ShootingGame::Collision()
 
 void ShootingGame::MonsterEndCheck()
 {
-	for (size_t i = 1; i < ArrMonsterCount; i++)
-	{
-		ArrMonster[i].Xmove();
-	}
-	ArrMonster[0].Ymove();
+	//for (size_t i = 1; i < ArrMonsterCount; i++)
+	//{
+	//	ArrMonster[i].Xmove();
+	//}
+	//ArrMonster[0].Ymove();
 }
 
 void ShootingGame::GameUpdate() 

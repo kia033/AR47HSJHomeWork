@@ -6,6 +6,28 @@ Monster::Monster()
 	RenderChar = 'M';
 }
 
+// 선언과 구현을 분리했다면 override를 생략한다.
+void Monster::Render() /*override*/
+{
+	if (true == IsUpdate()) // 몬스터가 살아있을때
+	{
+		ConsoleGameObject::Render();
+	}
+	else if (0 < DeathTime)
+	{
+		if (DeathTime % 2) // 2로 나누어 떨어진다면 짝수 초일때 
+		{
+			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Pos, '@');
+		}
+		else // 홀수 초 일때
+		{
+			ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Pos, '+');
+		}
+
+		--DeathTime;
+	}
+}
+
 void Monster::Update() 
 {
 	if (false == IsUpdate())
