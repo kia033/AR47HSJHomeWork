@@ -25,6 +25,7 @@ int main()
             Array0[i] = i;
         }
 
+
         // 숙제 1 기존의 데이터를 보존하는 것을 말하는 거싱다.
         // 숙제 2 줄어들든 커지든 데이터는 보존되어야 한다.
         // 원래 데이터를 대입하고 삭제한다.
@@ -44,11 +45,16 @@ int main()
         GameEngineArray Array1(5);
 
         // 숙제 3 왜 터지는지 이해하고 고쳐라.
-        Array1 = Array0;
+        // 디폴트 대입 연산자는 얕은 복사로
+        // 원본 값이 복사된 값과 같은 참조를 가리키는 것이다.
+        // 터지지 않게 하려면 새로운 동적할당을 그 수만큼 하여 새롭게 만든다.
+       Array1 = Array0;
 
     }
 
     {
+
+        printf_s("\n숙제 4\n");
         GameEngineArray Array0(10);
         GameEngineArray Array1(5);
 

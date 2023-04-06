@@ -31,8 +31,24 @@ public:
 
 	GameEngineArray& operator=(const GameEngineArray& _Other)
 	{
-		ArrCount = _Other.ArrCount;
-		ArrPtr = _Other.ArrPtr;
+		if (nullptr != ArrPtr)
+		{
+			delete[] ArrPtr;
+			ArrPtr = nullptr;
+		}
+
+		size_t OtherArrCount = _Other.ArrCount;
+
+
+		this->ArrCount = OtherArrCount;
+		this->ArrPtr = new DataType[OtherArrCount];
+
+		int Count = ArrCount <= OtherArrCount ? ArrCount : OtherArrCount;
+
+		for (size_t i = 0; i < Count; i++)
+		{
+			ArrPtr[i] = _Other.ArrPtr[i];
+		}
 
 		return *this;
 	}
@@ -49,16 +65,33 @@ public:
 
 	// 값을 넘기고 지운다. 숙제 
 	// 삼항 연산자 사용
+	// 기존의 할당된 배열을 알고 있는것은 
+	// 섣불리 지우면 안된다.
+
+	// 기존의 있던 값에서 현재의 배열이 복사한다음 삭제해야 한다.
+
 	void ReSize(int _Value)
 	{
+		DataType* NewArrPtr = new DataType[_Value];
+
 		if (nullptr != ArrPtr)
 		{
+
+
+			int Count = ArrCount <= _Value ? ArrCount : _Value;
+
+			for (size_t i = 0; i < Count; i++)
+			{
+				NewArrPtr[i] = ArrPtr[i];
+			}
+
 			delete[] ArrPtr;
 			ArrPtr = nullptr;
 		}
 
-		ArrPtr = new DataType[_Value];
+		ArrPtr = NewArrPtr;
 		ArrCount = _Value;
+
 	}
 
 protected:
