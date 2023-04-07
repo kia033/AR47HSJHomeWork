@@ -1,5 +1,6 @@
 #pragma once
 #include "ConsoleGameMath.h"
+#include "GameEngineArray.h"
 
 // 이게 1단계
 // 근본오브 근본 수학 물리 
@@ -28,7 +29,9 @@ public:
 protected:
 
 private:
-	char Arr[ScreenYSize][ScreenXSize] = { 0, };
+	//char Arr[ScreenYSize][ScreenXSize] = { 0, };
+
+	GameEngineArray < GameEngineArray<char>> ArrScreen;
 
 	ConsoleGameScreen();
 
