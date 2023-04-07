@@ -5,9 +5,9 @@
 
 #define MsgBoxAssert(Text)     MessageBoxA(nullptr, Text, "Error", MB_OK); assert(false);
 
-typedef int DataType;
+//typedef int DataType;
 
-// Ό³Έν :
+template<typename DataType>
 class GameEngineArray
 {
 public:

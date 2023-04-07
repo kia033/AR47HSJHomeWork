@@ -5,7 +5,7 @@
 
 #define MsgBoxAssert(Text)     MessageBoxA(nullptr, Text, "Error", MB_OK); assert(false);
 
-typedef int DataType;
+//typedef int DataType;
 
 // Ό³Έν :
 class GameEngineArray
