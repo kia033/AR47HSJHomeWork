@@ -31,7 +31,7 @@ protected:
 private:
 	//char Arr[ScreenYSize][ScreenXSize] = { 0, };
 
-	GameEngineArray < GameEngineArray<char>> ArrScreen;
+	GameEngineArray<GameEngineArray<char>> ArrScreen;
 
 	ConsoleGameScreen();
 
