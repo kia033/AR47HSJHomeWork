@@ -10,3 +10,5 @@ void ConsoleGameObject::Render()
 
 	ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Pos, RenderChar);
 }
+
+void ConsoleGameObject::Update() {}

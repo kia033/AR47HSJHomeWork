@@ -7,7 +7,7 @@
 
 //typedef int DataType;
 
-// Ό³Έν :
+template<typename DataType>
 class GameEngineArray
 {
 public:

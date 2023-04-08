@@ -4,14 +4,45 @@
 #include <iostream>
 #include "../GameEngineBase/GameEngineDebug.h"
 #include "../GameEngineConsole/ConsoleGameScreen.h"
+#include "../GameEngineConsole/ConsoleGameObject.h"
+#include <conio.h>
+#include "Player.h"
+
+GameEngineArray<ConsoleGameObject*> AllObject;
+
+void CreateConsoleObject()
+{
+
+}
 
 int main()
 {
-	while (true)
+	GameEngineDebug::LeckCheck();
+
+	int2 ScreenSize = { 5, 5 };
+
+	ConsoleGameObject* NewPlayer = new Player();
+
+	ConsoleGameScreen::GetMainScreen().SetScreenSize(ScreenSize);
+
+	
+	while (Player::IsGameUpdate)
 	{
 		ConsoleGameScreen::GetMainScreen().ScreenClear();
 
+		if (nullptr != NewPlayer)
+		{
+			NewPlayer->Update();
+			NewPlayer->Render();
+		}
+
 		ConsoleGameScreen::GetMainScreen().ScreenPrint();
 		Sleep(500);
+	}
+
+	if (nullptr != NewPlayer)
+	{
+		delete NewPlayer;
+		NewPlayer = nullptr;
 	}
 }
