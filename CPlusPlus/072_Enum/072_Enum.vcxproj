@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{c6f873ee-58bc-4445-9bbd-5e570589dfe8}</ProjectGuid>
-    <RootNamespace>HomeWork0407</RootNamespace>
+    <ProjectGuid>{e06910d8-8898-482f-85a7-2bbda386be6d}</ProjectGuid>
+    <RootNamespace>My072Enum</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,43 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Bomb.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="ConsoleObjectManager.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="GameEnum.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="HomeWork0407.cpp" />
-    <ClCompile Include="Player.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GameEngineBase\GameEngineBase.vcxproj">
-      <Project>{e16897ac-3622-4bff-b818-2802e2e611b0}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\GameEngineConsole\GameEngineConsole.vcxproj">
-      <Project>{7501c7be-cb1d-4440-9018-b0ca19e33488}</Project>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Bomb.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="ConsoleObjectManager.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="GameEnum.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Player.h" />
+    <ClCompile Include="072_Enum.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

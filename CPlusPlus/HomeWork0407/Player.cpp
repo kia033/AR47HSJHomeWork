@@ -1,13 +1,17 @@
 #include "Player.h"
-#include "../GameEngineConsole/ConsoleGameScreen.h"
 #include <conio.h>
 #include <Windows.h>
+#include "../GameEngineConsole/ConsoleGameScreen.h"
+#include "ConsoleObjectManager.h"
+#include "Bomb.h"
+#include "GameEnum.h"
 
 bool Player::IsGameUpdate = true;
 
 Player::Player()
 {
 	RenderChar = '*';
+	SetPos(ConsoleGameScreen::GetMainScreen().GetScreenSize().Half());
 }
 // 화면바깥으로 못나가게 하세요. 
 void Player::Update()
@@ -62,6 +66,10 @@ void Player::Update()
 	case 'f':
 	case 'F':
 	{
+		Bomb* NewBomb = ConsoleObjectManager::CreateConsoleObject<Bomb>(ObjectOrder::Bomb);
+		NewBomb->Init();
+		NewBomb->SetPos(GetPos());
+
 		// 폭탄설치
 		break;
 	}
