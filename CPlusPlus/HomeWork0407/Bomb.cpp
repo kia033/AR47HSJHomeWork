@@ -9,60 +9,45 @@ Bomb::~Bomb()
 {
 }
 
-void Bomb::Init()
+void Bomb::Init(int _BombPower)
 {
+	MaxExpPower = _BombPower;
+	CurExpPower = 0;
 	RenderChar = '@';
 }
 
-void Bomb::explogen()
-{
-	int2 Left = Pos;
-	int2 Right = Pos;
-	int2 Up = Pos;
-	int2 Down = Pos;
-
-
-
-	
-	for (size_t i = 0; i < 3; i++)
-	{
-		Left.X -= 1;
-		Right.X += 1;
-		Up.Y -= 1;
-		Down.Y += 1;
-		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Left, '@');
-		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Right, '@');
-		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Up, '@');
-		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Down, '@');
-	}
-
-
-}
 
 void Bomb::Update()
 {
 	ConsoleGameObject::Update();
 
+	if (CurExpPower == MaxExpPower)
+	{
+		Death();
+		// Off();
+	}
 
 	if (0 >= --BoomCount)
 	{
-		Off();
-
+		CurExpPower++;
 	}
 }
 
 
 void Bomb::Render()
 {
-
-	RenderChar = '@';
-
-	if (1 == BoomCount)
-	{
-		explogen();
-	}
-
 	ConsoleGameObject::Render();
 
+	for (int i = 0; i < CurExpPower; i++)
+	{
+		int2 Left = GetPos() + int2::Left * i;
+		int2 Right = GetPos() + int2::Right * i;
+		int2 Up = GetPos() + int2::Up * i;
+		int2 Down = GetPos() + int2::Down * i;
 
+		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Left, '#');
+		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Right, '#');
+		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Up, '#');
+		ConsoleGameScreen::GetMainScreen().SetScreenCharacter(Down, '#');
+	}
 }

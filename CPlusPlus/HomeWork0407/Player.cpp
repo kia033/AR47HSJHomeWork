@@ -14,6 +14,17 @@ Player::Player()
 	SetPos(ConsoleGameScreen::GetMainScreen().GetScreenSize().Half());
 }
 // 화면바깥으로 못나가게 하세요. 
+
+bool Player::IsBomb(int2 _NextPos)
+{
+	// 폭탄이 설치되었다면 못통과하게 만들어놓으세요.
+	GameEngineArray<ConsoleGameObject*>& BombGroup
+		= ConsoleObjectManager::GetGroup(ObjectOrder::Bomb);
+
+	return false;
+}
+
+
 void Player::Update()
 {
 	if (0 == _kbhit())
@@ -67,7 +78,7 @@ void Player::Update()
 	case 'F':
 	{
 		Bomb* NewBomb = ConsoleObjectManager::CreateConsoleObject<Bomb>(ObjectOrder::Bomb);
-		NewBomb->Init();
+		NewBomb->Init(BombPower);
 		NewBomb->SetPos(GetPos());
 
 		// 폭탄설치
