@@ -21,7 +21,25 @@ bool Player::IsBomb(int2 _NextPos)
 	GameEngineArray<ConsoleGameObject*>& BombGroup
 		= ConsoleObjectManager::GetGroup(ObjectOrder::Bomb);
 
-	return false;
+	
+
+	for (size_t i = 0; i < BombGroup.Count(); i++)
+	{
+		if (nullptr == BombGroup[i])
+		{
+			continue;
+		}
+
+		int2 BombPos = BombGroup[i]->GetPos();
+
+		if (BombPos == _NextPos)
+		{
+			return false;
+		}
+	}
+
+
+	return true;
 }
 
 
@@ -38,13 +56,28 @@ void Player::Update()
 
 	switch (Ch)
 	{
+	case 'f':
+	case 'F':
+	{
+		Bomb* NewBomb = ConsoleObjectManager::CreateConsoleObject<Bomb>(ObjectOrder::Bomb);
+		NewBomb->Init(BombPower);
+		NewBomb->SetPos(GetPos());
+		Sleep(200);
+
+		// ÆøÅº¼³Ä¡
+		break;
+	}
 	case 'a':
 	case 'A':
 		NextPos = Pos;
 		NextPos.X -= 1;
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
-			Pos.X -= 1;
+			if (true == IsBomb(NextPos))
+			{
+				Pos.X -= 1;
+			}
+
 		}
 		break;
 	case 'd':
@@ -53,7 +86,10 @@ void Player::Update()
 		NextPos.X += 1;
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
-			Pos.X += 1;
+			if (true == IsBomb(NextPos))
+			{
+				Pos.X += 1;
+			}
 		}
 		break;
 	case 'w':
@@ -62,7 +98,10 @@ void Player::Update()
 		NextPos.Y -= 1;
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
-			Pos.Y -= 1;
+			if (true == IsBomb(NextPos))
+			{
+				Pos.Y -= 1;
+			}
 		}
 		break;
 	case 's':
@@ -71,19 +110,12 @@ void Player::Update()
 		NextPos.Y += 1;
 		if (false == ConsoleGameScreen::GetMainScreen().IsScreenOver(NextPos))
 		{
-			Pos.Y += 1;
+			if (true == IsBomb(NextPos))
+			{
+				Pos.Y += 1;
+			}
 		}
 		break;
-	case 'f':
-	case 'F':
-	{
-		Bomb* NewBomb = ConsoleObjectManager::CreateConsoleObject<Bomb>(ObjectOrder::Bomb);
-		NewBomb->Init(BombPower);
-		NewBomb->SetPos(GetPos());
-
-		// ÆøÅº¼³Ä¡
-		break;
-	}
 	case 'q':
 	case 'Q':
 	{
