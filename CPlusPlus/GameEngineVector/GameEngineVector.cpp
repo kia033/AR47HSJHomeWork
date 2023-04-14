@@ -15,7 +15,9 @@
 // 벡터 10개를 만들고도
 // [][][][][][][][][][]
 
-typedef int DataType;
+//typedef int DataType;
+
+template<typename DataType>
 
 class MyVector
 {
@@ -23,6 +25,16 @@ class MyVector
 public:
     MyVector()
     {
+
+    }
+    ~MyVector()
+    {
+
+        if (nullptr != ArrData)
+        {
+            delete[] ArrData;
+            ArrData = nullptr;
+        }
 
     }
 
@@ -41,7 +53,7 @@ public:
         ++Size;
     }
 
-    void reserve(size_t _Value)
+    void reserve(const size_t _Value)
     {
         DataType* NewPtr = new DataType[_Value];
         size_t CopySize = _Value < Capacity ? _Value : Capacity;
@@ -61,12 +73,12 @@ public:
         Capacity = _Value;
     }
 
-    size_t size()
+    size_t size() const
     {
         return Size;
     }
 
-    size_t capacity()
+    size_t capacity() const
     {
         return Capacity;
     }
@@ -98,10 +110,11 @@ private:
 int main()
 {
 
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     {
         MyVector Test;
 
-        Test.reserve(10);
+        Test.reserve(4);
 
         for (size_t i = 0; i < 10; i++)
         {
@@ -119,7 +132,7 @@ int main()
     }
 
     return 1;
-
+    system("cls");
     {
         std::vector<int> Test;
 
@@ -159,7 +172,7 @@ int main()
         Test.push_back(0);
         // [0][0][0][0]
 
-        printf_s("size : %d", (int)Test.size());
+       // printf_s("size : %d", (int)Test.size());
     }
 
     // Test.reserve(10);

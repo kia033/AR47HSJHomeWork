@@ -1,6 +1,8 @@
 #pragma once
 #include "../GameEngineConsole/GameEngineArray.h"
 #include "../GameEngineConsole/ConsoleGameObject.h"
+#include <vector>
+#include <list>
 
 class ConsoleObjectManager
 {
@@ -33,13 +35,12 @@ public:
 	static void ConsoleAllObjectDelete();
 
 	template<typename EnumType>
-	static GameEngineArray<ConsoleGameObject*>& GetGroup(EnumType _Order)
+	static std::list<ConsoleGameObject*>& GetGroup(EnumType _Order)
 	{
 		return AllObject[(int)_Order];
 	}
 
-
-	static GameEngineArray<ConsoleGameObject*>& GetGroup(int _Order)
+	static std::list<ConsoleGameObject*>& GetGroup(int _Order)
 	{
 		return AllObject[_Order];
 	}
@@ -56,6 +57,7 @@ private:
 	ConsoleObjectManager& operator=(const ConsoleObjectManager& _Other) = delete;
 	ConsoleObjectManager& operator=(ConsoleObjectManager&& _Other) noexcept = delete;
 
-	static GameEngineArray<GameEngineArray<ConsoleGameObject*>> AllObject;
+	static std::vector<std::list<ConsoleGameObject*>> AllObject;
+
 };
 
