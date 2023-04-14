@@ -19,10 +19,10 @@ public:
         }
     };
 
-    //void Function() 
-    //{
-    //    InnerValue = 20;
-    //}
+    void Function() 
+    {
+        InnerValue = 20;
+    }
 
 private:
     // 이걸 이너클래스 문법이라고 하고.
@@ -38,7 +38,7 @@ public:
 int main()
 {
     Test<int>::publicInner Innter;
-    // Test::publicInner
+    //Test::publicInner
 
     std::cout << "Hello World!\n";
 }

@@ -150,6 +150,16 @@ public:
 
     void push_front(const DataType& _Data)
     {
+        ListNode* NewListNode = new ListNode();
+        NewListNode->Value = _Data;
+
+        ListNode* NextNode = StartNode->Next;
+
+
+        NextNode->Prev = NewListNode;
+        StartNode->Next = NewListNode;
+        NewListNode->Next = NextNode;
+        NewListNode->Prev = StartNode;
 
     }
 
@@ -176,11 +186,12 @@ int main()
         NewList.push_back(888);
         NewList.push_back(777);
         NewList.push_back(123156456);
+        NewList.push_front(444);
 
         {
-            //                    999
+            //                    444
             GameEngineList::iterator Delete = NewList.begin();
-            ++Delete; // 888
+            ++Delete; // 999
 
             NewList.erase(Delete);
 
