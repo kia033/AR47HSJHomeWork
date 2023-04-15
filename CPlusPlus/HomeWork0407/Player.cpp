@@ -2,7 +2,7 @@
 #include <conio.h>
 #include <Windows.h>
 #include "../GameEngineConsole/ConsoleGameScreen.h"
-#include "ConsoleObjectManager.h"
+#include "../GameEngineConsole/ConsoleObjectManager.h"
 #include "Bomb.h"
 #include "GameEnum.h"
 
@@ -18,14 +18,19 @@ Player::Player()
 bool Player::IsBomb(int2 _NextPos)
 {
 	// 폭탄이 설치되었다면 못통과하게 만들어놓으세요.
-	GameEngineArray<ConsoleGameObject*>& BombGroup
+	std::list<ConsoleGameObject*>& BombGroup
 		= ConsoleObjectManager::GetGroup(ObjectOrder::Bomb);
 
 
-	for (size_t i = 0; i < BombGroup.Count(); i++)
-	{
-		ConsoleGameObject* Ptr = BombGroup[i];
+	// Ranged for 라는 문법이에요
 
+	// 절대절대절대. 내부에서 구조나 개수가 바뀌는 행동을 하면 안되요.
+	// push_back
+	// push_front
+	// erase
+
+	for (ConsoleGameObject* Ptr : BombGroup)
+	{
 		if (nullptr == Ptr)
 		{
 			continue;

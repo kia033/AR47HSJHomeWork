@@ -1,25 +1,34 @@
 #pragma once
-#include "../GameEngineConsole/GameEngineArray.h"
-#include "../GameEngineConsole/ConsoleGameObject.h"
+#include "GameEngineArray.h"
+#include "ConsoleGameObject.h"
 #include <vector>
 #include <list>
 
+// 설명 :
 class ConsoleObjectManager
 {
+
+	// 몬스터 그룹이 있다.
+	// 플레이어 그룹이 있다.
+	// 폭탄 그룹이 있다.
+
 public:
 	template<typename ObjectType>
 	static ObjectType* CreateConsoleObject(int _Order)
 	{
-		if (_Order >= AllObject.Count())
+		// 완전히 새로운 배열이 1개더 만들어지는 거죠
+		// GameEngineArray<ConsoleGameObject*> Group = AllObject[_Order];
+
+		// 0       ==   0
+		if (_Order >= AllObject.size())
 		{
-			AllObject.ReSize(_Order + 1);
+			AllObject.resize(_Order + 1);
 		}
-		GameEngineArray<ConsoleGameObject*>& Group = AllObject[_Order];
+
+		std::list<ConsoleGameObject*>& Group = AllObject[_Order];
 		ObjectType* NewObject = new ObjectType();
 		// Player* NewObject = new Player();
-		Group.ReSize(Group.Count() + 1);
-		Group[Group.Count() - 1] = NewObject;
-
+		Group.push_back(NewObject);
 		return NewObject;
 	}
 
@@ -45,7 +54,6 @@ public:
 		return AllObject[_Order];
 	}
 
-
 private:
 	// constrcuter destructer
 	ConsoleObjectManager();
@@ -58,6 +66,5 @@ private:
 	ConsoleObjectManager& operator=(ConsoleObjectManager&& _Other) noexcept = delete;
 
 	static std::vector<std::list<ConsoleGameObject*>> AllObject;
-
 };
 

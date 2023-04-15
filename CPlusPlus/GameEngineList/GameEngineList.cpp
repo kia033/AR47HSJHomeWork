@@ -164,9 +164,6 @@ public:
     }
 
 private:
-
-
-
     // 더미노트
     ListNode* StartNode = new ListNode();
     ListNode* EndNode = new ListNode();
@@ -186,10 +183,10 @@ int main()
         NewList.push_back(888);
         NewList.push_back(777);
         NewList.push_back(123156456);
-        NewList.push_front(444);
-
+        NewList.push_front(2000);
+        //
         {
-            //                    444
+            //                    2000
             GameEngineList::iterator Delete = NewList.begin();
             ++Delete; // 999
 

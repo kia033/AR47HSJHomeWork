@@ -16,7 +16,7 @@ public:
 
 
 private:
-	int BombPower = 5;
+	int BombPower = 1;
 
 };
 
