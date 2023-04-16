@@ -15,8 +15,10 @@ public:
 	bool IsBomb(int2 _NextPos);
 
 
+
+
+	static int BombPower;
 private:
-	int BombPower = 1;
 
 };
 

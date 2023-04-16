@@ -1,12 +1,13 @@
 #pragma once
 #include "../GameEngineConsole/ConsoleGameObject.h"
-
+#include "Player.h"
 // 첫번째 숙제입니다.
 // 먹으면 플레이어의 폭탄의 위력이 증가하게 하세요.
 
 class ConsoleGameScreen;
 class Item : public ConsoleGameObject
 {
+	friend Player;
 public:
 	// constrcuter destructer
 	Item();
@@ -18,9 +19,9 @@ public:
 	Item& operator=(const Item& _Other) = delete;
 	Item& operator=(Item&& _Other) noexcept = delete;
 
+	void Check();
 protected:
 	void Update() override;
-	void Render() override;
 
 private:
 

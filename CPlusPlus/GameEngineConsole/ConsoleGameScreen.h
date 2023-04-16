@@ -29,6 +29,14 @@ public:
 
 	void SetScreenCharacter(const int2& _Pos, char _Ch);
 
+	char GetArrScreen(int2& Pos)
+	{
+		return ArrScreen[Pos.Y][Pos.X];
+	}
+
+	bool ScreenEndCheck();
+
+
 protected:
 
 private:
@@ -38,8 +46,8 @@ private:
 
 	// GameEngineArray<char> ArrPtr 여러개 
 	// char를 여러개 가질수 있는 녀석
-	GameEngineArray<GameEngineArray<char>> ArrScreen;
 
+	GameEngineArray<GameEngineArray<char>> ArrScreen;
 	int2 Size;
 
 

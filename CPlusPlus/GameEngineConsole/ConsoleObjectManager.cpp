@@ -14,6 +14,10 @@ ConsoleObjectManager::~ConsoleObjectManager()
 
 void ConsoleObjectManager::ConsoleAllObjectUpdate()
 {
+	bool EndCheck = ConsoleGameScreen::GetMainScreen().ScreenEndCheck();
+
+
+
 	// std::vector
 	for (size_t GroupIndex = 0; GroupIndex < AllObject.size(); GroupIndex++)
 	{
@@ -128,3 +132,5 @@ void ConsoleObjectManager::ConsoleAllObjectDelete()
 		}
 	}
 }
+
+

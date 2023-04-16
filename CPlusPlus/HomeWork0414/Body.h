@@ -1,5 +1,5 @@
 #pragma once
-#include <GameEngineConsole/ConsoleGameObject.h>
+#include "../GameEngineConsole/ConsoleGameObject.h"
 
 class ConsoleGameScreen;
 class Body : public ConsoleGameObject

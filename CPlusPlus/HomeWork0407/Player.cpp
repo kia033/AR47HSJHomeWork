@@ -4,9 +4,11 @@
 #include "../GameEngineConsole/ConsoleGameScreen.h"
 #include "../GameEngineConsole/ConsoleObjectManager.h"
 #include "Bomb.h"
+#include "item.h"
 #include "GameEnum.h"
 
 bool Player::IsGameUpdate = true;
+int Player::BombPower = 1;
 
 Player::Player()
 {
@@ -62,6 +64,14 @@ void Player::Update()
 
 	switch (Ch)
 	{
+	case'i':
+	case'I':
+	{
+		Item* NewItem = ConsoleObjectManager::CreateConsoleObject<Item>(ObjectOrder::Item);
+		NewItem->Check();
+		break;
+	}
+
 	case 'f':
 	case 'F':
 	{
@@ -119,6 +129,6 @@ void Player::Update()
 	default:
 		break;
 	}
-
 }
+
 

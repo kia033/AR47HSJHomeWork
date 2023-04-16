@@ -3,6 +3,22 @@
 
 ConsoleGameScreen ConsoleGameScreen::MainScreen;
 
+
+bool ConsoleGameScreen::ScreenEndCheck()
+{
+	for (size_t y = 0; y < this->Size.Y; y++)
+	{
+		for (size_t x = 0; x < this->Size.X; x++)
+		{
+			if (ArrScreen[y][x] == 'a')
+			{
+				return true;
+			}
+		}
+	}
+	return false; // a가 남아있지않다.
+}
+
 void ConsoleGameScreen::ScreenClear()
 {
 	system("cls");
