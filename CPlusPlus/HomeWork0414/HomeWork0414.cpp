@@ -10,6 +10,7 @@
 #include "Head.h"
 #include "Body.h"
 #include <conio.h>
+#include "GameEnum.h"
 
 int main()
 {
@@ -20,19 +21,19 @@ int main()
 
 	GameEngineDebug::LeckCheck();
 
-	int2 ScreenSize = { 3, 3 };
+	int2 ScreenSize = { 5, 5 };
 	ConsoleGameScreen::GetMainScreen().SetScreenSize(ScreenSize);
 
-	ConsoleObjectManager::CreateConsoleObject<Head>(0);
+	ConsoleObjectManager::CreateConsoleObject<Head>(ObjectOrder::Head);
+
+	ConsoleObjectManager::CreateConsoleObject<Body>(ObjectOrder::Body);
 
 
-
-	// 1번째 
+	// 1번째 V
 	// 바디는 플레이어와 플레이어를 따라다니는 
 	// 바디가 존재하지 않는 공간에 만들 방법을 생각해 내야 합니다.
 	// 추천 벡터를 이용해라.
 	// 빈공간이 나올때가지 랜덤돌린다 <= 최악의 선택
-	// ConsoleObjectManager::CreateConsoleObject<Body>(1);
 	// 주의사항 절대 클리어 못하는 상황이 나오는데 이건 처리 안해도 됩니다.
 
 	// 2번째 플레이어 먹으면 아이템은 몸통으로 뒤따라오게 만들고
@@ -54,4 +55,3 @@ int main()
 
 	ConsoleObjectManager::ConsoleAllObjectDelete();
 }
-

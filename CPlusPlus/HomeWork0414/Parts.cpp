@@ -1,14 +1,18 @@
 #include "Parts.h"
+#include "../GameEngineConsole/ConsoleObjectManager.h"
+#include "GameEnum.h"
+#include "Body.h"
 
-Parts::Parts() 
+Parts::Parts()
+{
+	RenderChar = 'o';
+}
+
+Parts::~Parts()
 {
 }
 
-Parts::~Parts() 
-{
-}
-
-void Parts::Update() 
+void Parts::Update()
 {
 	ConsoleGameObject::Update();
 }

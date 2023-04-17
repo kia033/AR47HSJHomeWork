@@ -1,7 +1,7 @@
 #pragma once
 #include "../GameEngineConsole/ConsoleGameObject.h"
 
-class ConsoleGameScreen;
+//class ConsoleGameScreen;
 class Body : public ConsoleGameObject
 {
 public:
@@ -15,8 +15,11 @@ public:
 	Body& operator=(const Body& _Other) = delete;
 	Body& operator=(Body&& _Other) noexcept = delete;
 
-protected:
 
+
+	void Check();
+protected:
+	void Update() override;
 private:
 
 };
