@@ -21,7 +21,7 @@ int main()
 
 	GameEngineDebug::LeckCheck();
 
-	int2 ScreenSize = { 10, 5 };
+	int2 ScreenSize = { 3, 3 };
 	ConsoleGameScreen::GetMainScreen().SetScreenSize(ScreenSize);
 
 	ConsoleObjectManager::CreateConsoleObject<Head>(SnakeGameOrder::Head);
@@ -50,6 +50,7 @@ int main()
 		ConsoleObjectManager::ConsoleAllObjectUpdate();
 		ConsoleObjectManager::ConsoleAllObjectRender();
 		ConsoleObjectManager::ConsoleAllObjectRelease();
+
 		Sleep(200);
 	}
 

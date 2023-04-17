@@ -5,6 +5,7 @@
 #include <GameEngineConsole/ConsoleObjectManager.h>
 #include "GameEnum.h"
 #include "Body.h"
+#include <GameEngineBase/GameEngineRandom.h>
 
 bool Head::IsPlay = true;
 
@@ -42,13 +43,13 @@ void Head::IsBodyCheck()
 				return;
 			}
 
-			Parts* Last = GetLast();
+			Parts* Last = GetLast(); // 맨끝의 주소를 찾는다.
 
 			//int2 PrevPos = GetPrevPos();
 			//BodyPart->SetPos(PrevPos);
 			// ??BodyPart
-			Last->SetNext(BodyPart);
-			ConsoleObjectManager::CreateConsoleObject<Body>(SnakeGameOrder::Body);
+			Last->SetNext(BodyPart); // 꼬리를 마지막에 배치한다.
+			NewBodyCreateCheck();
 			return;
 		}
 	}
@@ -57,24 +58,56 @@ void Head::IsBodyCheck()
 void Head::NewBodyCreateCheck()
 {
 
+	Body* BodyPtr = ConsoleObjectManager::CreateConsoleObject<Body>(SnakeGameOrder::Body);
+
+	while (true)
+	{
+		int X = GameEngineRandom::MainRandom.RandomInt(0, ConsoleGameScreen::GetMainScreen().GetScreenSize().X - 1);
+		int Y = GameEngineRandom::MainRandom.RandomInt(0, ConsoleGameScreen::GetMainScreen().GetScreenSize().Y - 1);
+		BodyPtr->SetPos({ X, Y });
+		EndCheck();
+
+		int2 BodyPos = BodyPtr->GetPos();
+		int BodyName = ConsoleGameScreen::GetMainScreen().GetArrScreen(BodyPos);
+
+		if (BodyName == 'a')
+		{
+			break;
+		}
+	}
+
 }
 
+void Head::EndCheck()
+{
+	bool EndCheck = ConsoleGameScreen::GetMainScreen().ScreenEndCheck();
+
+	if (EndCheck == false)
+	{
+		MsgBoxAssert("승리");
+		IsPlay = false;
+	}
+}
+ 
 // 화면바깥으로 못나가게 하세요. 
 void Head::Update()
 {
+
 	this;
 
 	if (true == ConsoleGameScreen::GetMainScreen().IsScreenOver(GetPos()))
 	{
 		IsPlay = false;
 	}
-
+	
+	
 
 	if (0 == _kbhit())
 	{
 		// SetPos(GetPos() + Dir);
 		// IsBodyCheck();
 		// NewBodyCreateCheck();
+		
 		return;
 	}
 
@@ -131,12 +164,13 @@ void Head::Update()
 	//	CurPart = CurPart->GetNext();
 	//}
 
-	NewBodyCreateCheck();
 
 	if (true == ConsoleGameScreen::GetMainScreen().IsScreenOver(GetPos()))
 	{
 		IsPlay = false;
 	}
+
+
 
 
 
