@@ -24,9 +24,6 @@ protected:
 
 private:
 	int2 Dir = int2::Up;
-	int2 NextPos;
-	int2 PrevPos;
-	bool Tail = false;
 
 };
 

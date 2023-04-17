@@ -1,8 +1,9 @@
 #pragma once
-#include "../GameEngineConsole/ConsoleGameObject.h"
+#include <GameEngineConsole/ConsoleGameObject.h>
+#include "Parts.h"
 
-//class ConsoleGameScreen;
-class Body : public ConsoleGameObject
+class ConsoleGameScreen;
+class Body : public Parts
 {
 public:
 	// constrcuter destructer
@@ -15,11 +16,8 @@ public:
 	Body& operator=(const Body& _Other) = delete;
 	Body& operator=(Body&& _Other) noexcept = delete;
 
-
-
-	void Check();
 protected:
-	void Update() override;
+
 private:
 
 };

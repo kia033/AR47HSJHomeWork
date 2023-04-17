@@ -1,20 +1,17 @@
 #include "Head.h"
 #include <conio.h>
-#include "../GameEngineConsole/ConsoleGameScreen.h"
-#include "../GameEngineConsole/ConsoleObjectManager.h"
+#include <GameEngineConsole/ConsoleGameScreen.h>
+#include <list>
+#include <GameEngineConsole/ConsoleObjectManager.h>
 #include "GameEnum.h"
 #include "Body.h"
-#include "Parts.h"
-#include <vector>
 
 bool Head::IsPlay = true;
 
 Head::Head()
 {
-	RenderChar = 'O';
+	RenderChar = '$';
 	SetPos(ConsoleGameScreen::GetMainScreen().GetScreenSize().Half());
-
-
 }
 
 Head::~Head()
@@ -23,61 +20,50 @@ Head::~Head()
 
 void Head::IsBodyCheck()
 {
-	std::list<ConsoleGameObject*>& TailGroup
-		= ConsoleObjectManager::GetGroup(ObjectOrder::Tail);
+	std::list<ConsoleGameObject*>& BombGroup
+		= ConsoleObjectManager::GetGroup(SnakeGameOrder::Body);
 
-	std::list<ConsoleGameObject*>::iterator Start = TailGroup.begin();
-	std::list<ConsoleGameObject*>::iterator End = TailGroup.end();
-
-	for (; Start != End; ++Start)
+	for (ConsoleGameObject* BodyPtr : BombGroup)
 	{
-		ConsoleGameObject* Object = *Start;
-
-		if (nullptr == Object || false == Object->IsUpdate())
+		// 터질때가 있습니다.
+		if (nullptr == BodyPtr)
 		{
 			continue;
 		}
 
-		PrevPos = Object->GetPos();
-		Object->SetPos(NextPos);
-		NextPos = PrevPos;
+		int2 BodyPos = BodyPtr->GetPos();
+		if (GetPos() == BodyPos)
+		{
+			Parts* BodyPart = dynamic_cast<Parts*>(BodyPtr);
 
+			if (nullptr == BodyPart)
+			{
+				MsgBoxAssert("바디그룹 쪽에 바디가 아닌 객체가 들어있었습니다.");
+				return;
+			}
 
+			Parts* Last = GetLast();
+
+			//int2 PrevPos = GetPrevPos();
+			//BodyPart->SetPos(PrevPos);
+			// ??BodyPart
+			Last->SetNext(BodyPart);
+			ConsoleObjectManager::CreateConsoleObject<Body>(SnakeGameOrder::Body);
+			return;
+		}
 	}
-
 }
 
 void Head::NewBodyCreateCheck()
 {
 
-
-	std::list<ConsoleGameObject*>& BodyGroup
-		= ConsoleObjectManager::GetGroup(ObjectOrder::Body);
-
-	for (ConsoleGameObject* Ptr : BodyGroup)
-	{
-		if (nullptr == Ptr)
-		{
-			continue;
-		}
-
-		int2 BodyPos = Ptr->GetPos();
-
-		if (Pos == BodyPos)
-		{
-			Ptr->Death();
-			//ConsoleObjectManager::CreateConsoleObject<Parts>(ObjectOrder::Tail);
-			Body* NewBody = ConsoleObjectManager::CreateConsoleObject<Body>(ObjectOrder::Body);
-			NewBody->Check();
-			Tail = true;
-
-		}
-	}
 }
 
 // 화면바깥으로 못나가게 하세요. 
 void Head::Update()
 {
+	this;
+
 	if (true == ConsoleGameScreen::GetMainScreen().IsScreenOver(GetPos()))
 	{
 		IsPlay = false;
@@ -94,7 +80,7 @@ void Head::Update()
 
 	char Ch = _getch();
 
-	int2 NextPos = Pos;
+	int2 NextPos = { 0, 0 };
 
 	switch (Ch)
 	{
@@ -122,12 +108,28 @@ void Head::Update()
 		return;
 	}
 
+	// 내가 이렇게 움직였다고 치겠습니다.
+
+
 
 	SetPos(GetPos() + Dir);
-	if (Tail == true)
-	{
-		IsBodyCheck();
-	}
+	IsBodyCheck();
+
+	NextMove();
+
+	//Parts* CurPart = this;
+	//while (true)
+	//{
+	//	Parts* Next = CurPart->GetNext();
+
+	//	if (nullptr == Next)
+	//	{
+	//		break;
+	//	}
+
+	//	Next->SetPos(CurPart->GetPrevPos());
+	//	CurPart = CurPart->GetNext();
+	//}
 
 	NewBodyCreateCheck();
 

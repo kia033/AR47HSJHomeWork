@@ -1,11 +1,7 @@
 #include "Parts.h"
-#include "../GameEngineConsole/ConsoleObjectManager.h"
-#include "GameEnum.h"
-#include "Body.h"
 
 Parts::Parts()
 {
-	RenderChar = 'o';
 }
 
 Parts::~Parts()
@@ -15,4 +11,17 @@ Parts::~Parts()
 void Parts::Update()
 {
 	ConsoleGameObject::Update();
+}
+
+void Parts::NextMove()
+{
+	Parts* Next = GetNext();
+
+	if (nullptr == Next)
+	{
+		return;
+	}
+
+	Next->SetPos(GetPrevPos());
+	return Next->NextMove();
 }

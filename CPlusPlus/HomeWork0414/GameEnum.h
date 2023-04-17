@@ -1,9 +1,7 @@
 #pragma once
 
-enum class ObjectOrder
+enum class SnakeGameOrder
 {
 	Head, // = 0
 	Body, // = 1
-	Tail, // = 2
-
 };
