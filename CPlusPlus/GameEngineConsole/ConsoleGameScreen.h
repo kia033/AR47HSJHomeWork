@@ -1,6 +1,6 @@
 #pragma once
 #include "ConsoleGameMath.h"
-#include "GameEngineArray.h"
+#include <vector>
 
 // 이게 1단계
 // 근본오브 근본 수학 물리 
@@ -27,15 +27,7 @@ public:
 
 	bool IsScreenOver(const int2& _Pos) const;
 
-	void SetScreenCharacter(const int2& _Pos, char _Ch);
-
-	char GetArrScreen(int2& Pos)
-	{
-		return ArrScreen[Pos.Y][Pos.X];
-	}
-
-	bool ScreenEndCheck();
-
+	void SetScreenCharacter(const int2& _Pos, wchar_t _Ch);
 
 protected:
 
@@ -46,10 +38,9 @@ private:
 
 	// GameEngineArray<char> ArrPtr 여러개 
 	// char를 여러개 가질수 있는 녀석
+	std::vector<std::vector<wchar_t>> ArrScreen;
 
-	GameEngineArray<GameEngineArray<char>> ArrScreen;
 	int2 Size;
-
 
 	// 캐릭터의 배열을 가진 또다른 배열이라고 할수 있어요.
 

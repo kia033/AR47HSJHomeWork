@@ -5,13 +5,12 @@
 #include <GameEngineConsole/ConsoleObjectManager.h>
 #include "GameEnum.h"
 #include "Body.h"
-#include <GameEngineBase/GameEngineRandom.h>
 
 bool Head::IsPlay = true;
 
 Head::Head()
 {
-	RenderChar = '$';
+	RenderChar = L'▼';
 	SetPos(ConsoleGameScreen::GetMainScreen().GetScreenSize().Half());
 }
 
@@ -43,13 +42,13 @@ void Head::IsBodyCheck()
 				return;
 			}
 
-			Parts* Last = GetLast(); // 맨끝의 주소를 찾는다.
+			Parts* Last = GetLast();
 
 			//int2 PrevPos = GetPrevPos();
 			//BodyPart->SetPos(PrevPos);
 			// ??BodyPart
-			Last->SetNext(BodyPart); // 꼬리를 마지막에 배치한다.
-			NewBodyCreateCheck();
+			Last->SetNext(BodyPart);
+			ConsoleObjectManager::CreateConsoleObject<Body>(SnakeGameOrder::Body);
 			return;
 		}
 	}
@@ -58,60 +57,42 @@ void Head::IsBodyCheck()
 void Head::NewBodyCreateCheck()
 {
 
-	Body* BodyPtr = ConsoleObjectManager::CreateConsoleObject<Body>(SnakeGameOrder::Body);
-
-	while (true)
-	{
-		int X = GameEngineRandom::MainRandom.RandomInt(0, ConsoleGameScreen::GetMainScreen().GetScreenSize().X - 1);
-		int Y = GameEngineRandom::MainRandom.RandomInt(0, ConsoleGameScreen::GetMainScreen().GetScreenSize().Y - 1);
-		BodyPtr->SetPos({ X, Y });
-		EndCheck();
-
-		int2 BodyPos = BodyPtr->GetPos();
-		int BodyName = ConsoleGameScreen::GetMainScreen().GetArrScreen(BodyPos);
-
-		if (BodyName == 'a')
-		{
-			break;
-		}
-	}
-
 }
 
-void Head::EndCheck()
-{
-	bool EndCheck = ConsoleGameScreen::GetMainScreen().ScreenEndCheck();
-
-	if (EndCheck == false)
-	{
-		MsgBoxAssert("승리");
-		IsPlay = false;
-	}
-}
- 
 // 화면바깥으로 못나가게 하세요. 
 void Head::Update()
 {
-
 	this;
 
 	if (true == ConsoleGameScreen::GetMainScreen().IsScreenOver(GetPos()))
 	{
 		IsPlay = false;
 	}
-	
-	
+
 
 	if (0 == _kbhit())
 	{
 		// SetPos(GetPos() + Dir);
 		// IsBodyCheck();
 		// NewBodyCreateCheck();
-		
 		return;
 	}
 
 	char Ch = _getch();
+
+	// 플레이어의 머리가
+	// 이동하는 방향에 따라서 ▲ ▼ ◀ ▶
+	// ▶▶▶▶▶▶▶▶
+
+	// ▶▶▶▶▶▶▶
+	//            ▼
+
+	// ▶▶▶▶▶▶
+	//          ▼
+	//          ▼
+
+	// 이게 되었다면 2번째 숙제로
+	// 
 
 	int2 NextPos = { 0, 0 };
 
@@ -164,13 +145,12 @@ void Head::Update()
 	//	CurPart = CurPart->GetNext();
 	//}
 
+	NewBodyCreateCheck();
 
 	if (true == ConsoleGameScreen::GetMainScreen().IsScreenOver(GetPos()))
 	{
 		IsPlay = false;
 	}
-
-
 
 
 

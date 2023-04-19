@@ -3,22 +3,6 @@
 
 ConsoleGameScreen ConsoleGameScreen::MainScreen;
 
-
-bool ConsoleGameScreen::ScreenEndCheck()
-{
-	for (size_t y = 0; y < this->Size.Y; y++)
-	{
-		for (size_t x = 0; x < this->Size.X; x++)
-		{
-			if (ArrScreen[y][x] == 'a')
-			{
-				return true;
-			}
-		}
-	}
-	return false; // a가 남아있지않다.
-}
-
 void ConsoleGameScreen::ScreenClear()
 {
 	system("cls");
@@ -27,21 +11,22 @@ void ConsoleGameScreen::ScreenClear()
 	{
 		for (size_t x = 0; x < this->Size.X; x++)
 		{
-			ArrScreen[y][x] = 'a';
+			ArrScreen[y][x] = L'□';
 		}
 	}
 }
 
 void ConsoleGameScreen::ScreenPrint() const
 {
+	setlocale(LC_ALL, "KOR");
 	for (size_t y = 0; y < this->Size.Y; y++)
 	{
 		for (size_t x = 0; x < this->Size.X; x++)
 		{
 			// Arr[y][x] = 'b';
-			printf_s("%c", ArrScreen[y][x]);
+			wprintf_s(L"%c", ArrScreen[y][x]);
 		}
-		printf_s("\n");
+		wprintf_s(L"\n");
 	}
 }
 
@@ -66,7 +51,7 @@ ConsoleGameScreen::~ConsoleGameScreen()
 
 void ConsoleGameScreen::SetScreenSize(int2 _Size)
 {
-	this->Size = _Size;
+	Size = _Size;
 
 	// ArrScreen[y][x]
 
@@ -84,13 +69,14 @@ void ConsoleGameScreen::SetScreenSize(int2 _Size)
 
 	// ArrScreen == GameEngineArray<GameEngineArray<char>>
 	// ArrScreen DataType == GameEngineArray<char>
-	this->ArrScreen.ReSize(Size.Y);
+	// 
+	ArrScreen.resize(Size.Y);
 
 	for (size_t i = 0; i < Size.Y; i++)
 	{
 		// ArrScreen[i] == GameEngineArray<char>
 		// ArrScreen[i] DataType == char
-		this->ArrScreen[i].ReSize(Size.X);
+		ArrScreen[i].resize(Size.X);
 	}
 
 
@@ -122,14 +108,14 @@ bool ConsoleGameScreen::IsScreenOver(const int2& _Pos) const
 	return false;
 }
 
-void ConsoleGameScreen::SetScreenCharacter(const int2& _Pos, char _Ch)
+void ConsoleGameScreen::SetScreenCharacter(const int2& _Pos, wchar_t _Ch)
 {
 	if (true == IsScreenOver(_Pos))
 	{
 		return;
 	}
 
-	this->ArrScreen[_Pos.Y][_Pos.X] = _Ch;
+	ArrScreen[_Pos.Y][_Pos.X] = _Ch;
 }
 
 
@@ -140,5 +126,5 @@ ConsoleGameScreen::ConsoleGameScreen()
 
 int2 ConsoleGameScreen::GetScreenSize()
 {
-	return this->Size;
+	return Size;
 }

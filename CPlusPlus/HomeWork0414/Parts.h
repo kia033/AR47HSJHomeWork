@@ -59,7 +59,8 @@ protected:
 	void Update() override;
 
 private:
-	int2 PrevPos;
+	int2 Dir = int2::Zero;
+	int2 PrevPos = int2::Zero;
 
 	Parts* Prev;
 	Parts* Next;

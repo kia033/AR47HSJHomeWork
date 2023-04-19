@@ -15,19 +15,27 @@ public:
 	int Y = 0;
 
 public:
-	inline int2 Half()
+	inline int2 Half() const
 	{
 		return { X / 2, Y / 2 };
 	}
 
-	bool Check(const int2& _Other)
+	bool Check(const int2& _Other) const
 	{
 		return X == _Other.X && Y == _Other.Y;
 	}
 
-	bool operator==(const int2& _Other) 
+	bool operator==(const int2& _Other) const
 	{
 		return X == _Other.X && Y == _Other.Y;
+	}
+
+	int2 operator-(const int2& _Other) const
+	{
+		int2 ReturnValue = *this;
+		ReturnValue.X -= _Other.X;
+		ReturnValue.Y -= _Other.Y;
+		return ReturnValue;
 	}
 
 	int2 operator+(const int2& _Other) const

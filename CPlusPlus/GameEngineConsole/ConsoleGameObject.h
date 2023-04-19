@@ -45,7 +45,7 @@ public:
 
 protected:
 	int2 Pos;
-	char RenderChar = ' ';
+	wchar_t RenderChar = L'£À';
 
 private:
 	bool UpdateValue = true;
